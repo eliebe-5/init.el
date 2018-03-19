@@ -30,7 +30,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec x-terminal-emulator --command=fish
+bindsym $mod+Return exec xterm -bg Grey15 -fg Grey82 -e fish
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -48,7 +48,8 @@ bindsym $mod+d exec dmenu_run
 bindsym $mod+l exec i3lock -c 330000
 #bindsym $mod+semicolon focus right
 
-
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -155,4 +156,24 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+	position top
+	colors {
+		background #222222
+		focused_workspace #333333 #333333 #dddddd
+		active_workspace #000066 #000055 #dddddd
+		inactive_workspace #222222 #222222 #dddddd
+		statusline #dddddd
+	}
+
+
 }
+
+# class			border	bg	text	indic	child_border
+client.focused		#222222	#222222	#ffffff	#000000	#222222
+
+client.focused_inactive	#222222	#222222	#aaaaaa	#dddddd	#222222
+client.unfocused	#222222	#222222	#aaaaaa	#dddddd	#222222
+client.urgent		#000055	#000033	#dddddd	#dddddd	#000055
+client.placeholder	#000000	#0c0c0c	#ffffff	#000000	#0c0c0c
+
+client.background	#111111
